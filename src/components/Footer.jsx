@@ -1,5 +1,6 @@
 import { Github, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.jpg";
 
 const Footer = () => {
   return (
@@ -7,7 +8,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="inline-block mb-4">
+            <Link to="/" className="flex-shrink-0  flex items-center">
+              <img src={logo} alt="" className="h-12" />
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-violet-600 bg-clip-text text-transparent">
                 Portfolio
               </span>

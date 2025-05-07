@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { Menu, X } from "lucide-react"
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const location = useLocation()
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -15,19 +16,17 @@ const Navbar = () => {
     { name: "Projects", path: "/projects" },
     { name: "Resume", path: "/resume" },
     { name: "Contact", path: "/contact" },
-  ]
+  ];
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-violet-600 bg-clip-text text-transparent">
-                Portfolio
-              </span>
+            <Link to="/" className="flex-shrink-0  flex items-center">
+              <img src={logo} alt="" className="h-12" />
             </Link>
           </div>
 
@@ -38,18 +37,20 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === link.path ? "text-purple-500" : "text-gray-300 hover:text-purple-400"
+                  location.pathname === link.path
+                    ? "text-purple-500"
+                    : "text-gray-300 hover:text-purple-400"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="px-4 py-2 rounded-md bg-gradient-to-r from-purple-600 to-violet-600 text-white text-sm font-medium hover:from-purple-700 hover:to-violet-700 transition-all duration-300"
             >
               Hire Me
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -93,7 +94,7 @@ const Navbar = () => {
         </div>
       )}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
