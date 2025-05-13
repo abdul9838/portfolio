@@ -3,6 +3,7 @@ import { ExternalLink, Github } from "lucide-react";
 import recipie from "@/assets/recipie.png";
 import weather from "@/assets/weather.png";
 import exommerce from "@/assets/ecommerce.png";
+import agency from "@/assets/digital-agency.png";
 
 const Projects = () => {
   const projects = [
@@ -11,7 +12,8 @@ const Projects = () => {
       title: "Recipe App",
       category: "web",
       image: recipie,
-      description: "A recipe app with search functionality",
+      description:
+        "A recipe app featuring powerful search functionality to help users quickly find, save, and explore delicious meals and cooking ideas.",
       technologies: [
         "React",
         "Tailwind CSS",
@@ -20,6 +22,22 @@ const Projects = () => {
       ],
       demoLink: "https://foodie-theta-cyan.vercel.app/",
       githubLink: "https://github.com/abdul9838/foodie.git",
+    },
+    {
+      id: 4,
+      title: "Digital Agency",
+      category: "web",
+      image: agency,
+      description:
+        "A creative digital agency website offering web design, branding, marketing, and development services to help businesses grow online.",
+      technologies: [
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "React Router Dom",
+      ],
+      demoLink: "https://digital-agency-one-mu.vercel.app/",
+      githubLink: "https://github.com/abdul9838/digital-agency.git",
     },
     {
       id: 3,
@@ -42,7 +60,8 @@ const Projects = () => {
       title: "Weather App",
       category: "web",
       image: weather,
-      description: "A weather app with search functionality",
+      description:
+        "A weather app with search functionality providing real-time forecasts, location-based updates, and detailed climate information for any city.",
       technologies: ["React", "Tailwind CSS", "Framer Motion"],
       demoLink: "https://abdul9838.github.io/Weather_App/",
       githubLink: "https://github.com/abdul9838/Weather_App.git",
@@ -77,7 +96,7 @@ const Projects = () => {
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-72 object-top object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute  md:block inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                   <div className="flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 gap-4">
