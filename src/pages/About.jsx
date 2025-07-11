@@ -1,4 +1,5 @@
 import { FileDown } from "lucide-react";
+import profile from "@/assets/Profile.jpg";
 
 const About = () => {
   return (
@@ -20,9 +21,9 @@ const About = () => {
           <div className="relative">
             <div className="relative w-full max-w-md mx-auto aspect-[4/5] rounded-lg overflow-hidden border-2 border-purple-500/30">
               <img
-                src="https://media.licdn.com/dms/image/v2/D5603AQHeDsvAtc5Z7w/profile-displayphoto-shrink_800_800/B56ZWbhWVvGsAk-/0/1742070966936?e=1752105600&v=beta&t=_YlH9n2iDFy5HurIRtusLD0wr1kX-N5myNCBKvXvP9U"
+                src={profile}
                 alt="About Me"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-x-[-1]"
               />
 
               {/* Experience badge */}

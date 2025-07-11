@@ -1,5 +1,6 @@
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Linkedin, FileDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import profile from "@/assets/Profile.jpg";
 
 const Home = () => {
   return (
@@ -33,6 +34,16 @@ const Home = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
+              <div className="flex justify-center">
+                <a
+                  href="/assets/AbdulAhadF.pdf"
+                  download
+                  className="px-6 py-3 rounded-md bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium hover:from-purple-700 hover:to-violet-700 transition-all duration-300 inline-flex items-center gap-2"
+                >
+                  Resume
+                  <FileDown />
+                </a>
+              </div>
               <Link
                 to="/projects"
                 className="px-6 py-3 rounded-md bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium hover:from-purple-700 hover:to-violet-700 transition-all duration-300 flex items-center gap-2"
@@ -72,7 +83,7 @@ const Home = () => {
               <div className="relative w-full aspect-square rounded-full bg-gradient-to-br from-purple-600 to-violet-600 p-1">
                 <div className="absolute inset-1 rounded-full overflow-hidden bg-black">
                   <img
-                    src="https://media.licdn.com/dms/image/v2/D5603AQHeDsvAtc5Z7w/profile-displayphoto-shrink_800_800/B56ZWbhWVvGsAk-/0/1742070966936?e=1752105600&v=beta&t=_YlH9n2iDFy5HurIRtusLD0wr1kX-N5myNCBKvXvP9U"
+                    src={profile}
                     alt="Profile"
                     className="w-full scale-x-[-1] rotate-15 h-full object-cover"
                   />
