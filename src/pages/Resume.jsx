@@ -32,16 +32,16 @@ const Resume = () => {
     {
       position: "React Frontend Developer",
       company: "Growmore Tech",
-      duration: "Aug 2024 - Present",
+      duration: "Mar 2024 - Present",
       description:
-        "Worked on multiple web applications using React. improved application performance by 40%.",
+        "Worked on multiple web applications using React. Used coe splitting and best practices to improved application performance by 40%.",
     },
     {
       position: "Frontend Developer Intern",
       company: "Growmore Tech",
-      duration: "Jun 2024 -Aug 2024",
+      duration: "Jan 2024 -Fab 2024",
       description:
-        "Worked on multiple web applications using HTML, CSS, React. Implemented CI/CD pipelines and improved application performance by 40%.",
+        "Worked on multiple web applications using HTML, CSS, React. Implemented best practices to improved application performance by 30%.",
     },
   ];
 
