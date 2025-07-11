@@ -36,7 +36,7 @@ const Home = () => {
             <div className="flex flex-wrap gap-4">
               <div className="flex justify-center">
                 <a
-                  href="/assets/AbdulAhadF.pdf"
+                  href="/Abdul_Ahad.pdf"
                   download
                   className="px-6 py-3 rounded-md bg-gradient-to-r from-purple-600 to-violet-600 text-white font-medium hover:from-purple-700 hover:to-violet-700 transition-all duration-300 inline-flex items-center gap-2"
                 >
