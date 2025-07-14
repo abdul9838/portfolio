@@ -31,35 +31,16 @@ const Resume = () => {
   const experience = [
     {
       position: "React Frontend Developer",
-      company: "Growmore Tech",
-      duration: "Mar 2024 - Present",
+      company: "Growmore Tech, Lucknow",
+      duration: "Jan 2024 - June 2025",
       description:
         "Worked on multiple web applications using React. Used coe splitting and best practices to improved application performance by 40%.",
     },
     {
-      position: "Frontend Developer Intern",
-      company: "Growmore Tech",
-      duration: "Jan 2024 -Fab 2024",
-      description:
-        "Worked on multiple web applications using HTML, CSS, React. Implemented best practices to improved application performance by 30%.",
-    },
-  ];
-
-  const certifications = [
-    {
-      name: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      year: "2021",
-    },
-    {
-      name: "Google Professional Cloud Developer",
-      issuer: "Google Cloud",
-      year: "2020",
-    },
-    {
-      name: "MongoDB Certified Developer",
-      issuer: "MongoDB Inc.",
-      year: "2019",
+      position: "Python Developer (Intern)",
+      company: "Analyze Infotech, Lucknow",
+      duration: "Dec 2022 - May 2023",
+      description: "Worked on Room rental services web app using Django.",
     },
   ];
 
@@ -92,6 +73,51 @@ const Resume = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Experience */}
+          <div>
+            <div className="flex items-center mb-8">
+              <div className="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center text-purple-500 mr-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold">Experience</h3>
+            </div>
+
+            <div className="space-y-8">
+              {experience.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative pl-8 pb-8 border-l border-purple-900/30 last:border-0 last:pb-0"
+                >
+                  <div className="absolute left-0 top-0 w-4 h-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 to-violet-600"></div>
+                  <div className="px-4 py-3 bg-gray-900/50 rounded-lg border border-purple-900/30">
+                    <div className="flex flex-wrap justify-between items-center mb-2">
+                      <h4 className="text-lg font-bold text-white">
+                        {item.position}
+                      </h4>
+                      <span className="text-sm font-medium text-purple-500 bg-purple-900/30 px-3 py-1 rounded-full">
+                        {item.duration}
+                      </span>
+                    </div>
+                    <p className="text-gray-300 mb-2">{item.company}</p>
+                    <p className="text-gray-400 text-sm">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           {/* Education */}
           <div>
             <div className="flex items-center mb-8">
@@ -133,52 +159,6 @@ const Resume = () => {
                       </span>
                     </div>
                     <p className="text-gray-300 mb-2">{item.institution}</p>
-                    <p className="text-gray-400 text-sm">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Experience */}
-          <div>
-            <div className="flex items-center mb-8">
-              <div className="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center text-purple-500 mr-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold">Experience</h3>
-            </div>
-
-            <div className="space-y-8">
-              {experience.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative pl-8 pb-8 border-l border-purple-900/30 last:border-0 last:pb-0"
-                >
-                  <div className="absolute left-0 top-0 w-4 h-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-500 to-violet-600"></div>
-                  <div className="px-4 py-3 bg-gray-900/50 rounded-lg border border-purple-900/30">
-                    <div className="flex flex-wrap justify-between items-center mb-2">
-                      <h4 className="text-lg font-bold text-white">
-                        {item.position}
-                      </h4>
-                      <span className="text-sm font-medium text-purple-500 bg-purple-900/30 px-3 py-1 rounded-full">
-                        {item.duration}
-                      </span>
-                    </div>
-                    <p className="text-gray-300 mb-2">{item.company}</p>
                     <p className="text-gray-400 text-sm">{item.description}</p>
                   </div>
                 </div>
