@@ -29,7 +29,7 @@ const About = () => {
               {/* Experience badge */}
               <div className="absolute -right-6 bottom-1/4 bg-gradient-to-r from-purple-600 to-violet-600 rounded-lg p-4 shadow-xl">
                 <div className="text-center">
-                  <span className="block text-3xl font-bold">1+</span>
+                  <span className="block text-3xl font-bold">2+</span>
                   <span className="text-sm">Years of Experience</span>
                 </div>
               </div>

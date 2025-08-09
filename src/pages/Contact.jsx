@@ -158,7 +158,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-gray-900/50 border border-purple-900/30 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 rounded-md text-white"
-                    placeholder="abdulahadansari810@gmail.com"
+                    placeholder="ex- xyz@gmail.com"
                   />
                 </div>
               </div>
@@ -197,7 +197,7 @@ const Contact = () => {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-gray-900/50 border border-purple-900/30 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 rounded-md text-white"
-                  placeholder="Hello, I'm interested in working with you on a project..."
+                  placeholder="Enter your message here..."
                 ></textarea>
               </div>
 
