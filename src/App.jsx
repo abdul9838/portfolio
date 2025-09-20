@@ -117,7 +117,8 @@ const Portfolio = () => {
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold flex items-center gap-2">
               <img
-                src="/assets/logo.jpg"
+
+loading="lazy"src="/assets/logo.jpg"
                 alt="logo"
                 className="w-10 h-10 rounded"
               />
@@ -299,6 +300,7 @@ const Portfolio = () => {
                 <div className="w-80 h-80 bg-emerald-400 rounded-full flex items-center justify-center">
                   <div className="w-72 h-72 bg-emerald-500 rounded-full flex items-center justify-center">
                     <img
+                    loading="lazy"
                       src="/assets/Profile.jpg"
                       alt="Profile"
                       className="w-64 h-64 rounded-full object-cover"
