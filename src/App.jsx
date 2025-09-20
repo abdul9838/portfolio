@@ -117,8 +117,8 @@ const Portfolio = () => {
           <div className="flex justify-between items-center">
             <div className="text-2xl font-bold flex items-center gap-2">
               <img
-
-loading="lazy"src="/assets/logo.jpg"
+                loading="lazy"
+                src="/assets/logo.jpg"
                 alt="logo"
                 className="w-10 h-10 rounded"
               />
@@ -242,7 +242,7 @@ loading="lazy"src="/assets/logo.jpg"
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative min-h-[80vh] flex items-center">
-          <div className="flex flex-col lg:flex-row items-center justify-between">
+          <div className="flex flex-col lg:flex-row items-center gap-x-20 justify-between">
             <div className="lg:w-1/2 mb-12 lg:mb-0">
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 <span className="text-gray-800">Hello There!</span>
@@ -251,7 +251,9 @@ loading="lazy"src="/assets/logo.jpg"
                 <span className="text-emerald-500">Abdul Ahad</span>
               </h1>
               <p className="text-gray-600 text-lg mb-8 max-w-lg">
-                I'm a Professional Web Developer who loves crafting seamless digital experiences. I have 2.5 years of experience in designing and developing modern web applications.
+                I'm a Professional Web Developer who loves crafting seamless
+                digital experiences. I have 2.5 years of experience in designing
+                and developing modern web applications.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -297,13 +299,13 @@ loading="lazy"src="/assets/logo.jpg"
 
             <div className="lg:w-1/2 flex justify-center">
               <div className="relative">
-                <div className="w-80 h-80 bg-emerald-400 rounded-full flex items-center justify-center">
-                  <div className="w-72 h-72 bg-emerald-500 rounded-full flex items-center justify-center">
+                <div className="w-96 h-96 bg-emerald-400 rounded-full flex items-center justify-center">
+                  <div className="w-80 h-80 bg-emerald-500 rounded-full flex items-center justify-center">
                     <img
-                    loading="lazy"
+                      loading="lazy"
                       src="/assets/Profile.jpg"
                       alt="Profile"
-                      className="w-64 h-64 rounded-full object-cover"
+                      className="w-72 h-7w-72 rounded-full object-cover"
                     />
                   </div>
                 </div>
