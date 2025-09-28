@@ -15,10 +15,11 @@ import {
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  from_name: '',
+  user_email: '',
+  message: '',
+});
+
 
   const handleInputChange = (e) => {
     setFormData({
@@ -30,9 +31,12 @@ const Portfolio = () => {
  const handleSubmit = (e) => {
   e.preventDefault();
 
+  
   const serviceID = 'service_dn7lvqs';
   const templateID = 'template_3265zpi';
   const userID = 'BRIuWVR14ScDSDgSy'; // Also called public key
+
+  console.log(formData) 
 
   emailjs.send(serviceID, templateID, formData, userID)
     .then((response) => {
@@ -590,7 +594,7 @@ const Portfolio = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="text"
-                name="name"
+                name="from_name"
                 placeholder="NAME"
                 value={formData.name}
                 onChange={handleInputChange}
@@ -599,7 +603,7 @@ const Portfolio = () => {
               />
               <input
                 type="email"
-                name="email"
+                name="user_email"
                 placeholder="EMAIL"
                 value={formData.email}
                 onChange={handleInputChange}
