@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from 'emailjs-com';
 import {
   Menu,
   X,
@@ -26,13 +27,23 @@ const Portfolio = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
+  const serviceID = 'service_dn7lvqs';
+  const templateID = 'template_3265zpi';
+  const userID = 'BRIuWVR14ScDSDgSy'; // Also called public key
+
+  emailjs.send(serviceID, templateID, formData, userID)
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      alert('Form submitted successfully!');
+      setFormData({ name: "", email: "", message: "" }); // Reset form
+    }, (err) => {
+      console.error('FAILED...', err);
+      alert('Failed to send message. Please try again.');
+    });
+};
   const portfolioProjects = [
     {
       id: 1,
@@ -206,12 +217,7 @@ const Portfolio = () => {
                 >
                   Portfolio
                 </a>
-                <a
-                  href="#pages"
-                  className="text-gray-600 hover:text-emerald-500"
-                >
-                  Pages
-                </a>
+                
                 <a
                   href="#contact"
                   className="text-gray-600 hover:text-emerald-500"
@@ -252,7 +258,7 @@ const Portfolio = () => {
               </h1>
               <p className="text-gray-600 text-lg mb-8 max-w-lg">
                 I'm a Professional Web Developer who loves crafting seamless
-                digital experiences. I have 2.5 years of experience in designing
+                digital experiences. I have 2 years of experience in designing
                 and developing modern web applications.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -375,7 +381,7 @@ const Portfolio = () => {
                   { name: "Express.js", level: "65%" },
                   { name: "PHP", level: "75%" },
                   { name: "MongoDB", level: "70%" },
-                  { name: "Git & GitHub", level: "87%" },
+                  { name: "Git & GitHub", level: "75%" },
                 ].map((skill, idx) => (
                   <div key={idx}>
                     <div className="flex justify-between mb-2">
@@ -482,8 +488,7 @@ const Portfolio = () => {
                 Frontend Development
               </h3>
               <p className="text-gray-600">
-                Building responsive and dynamic user interfaces with React.js,
-                Next.js, Tailwind CSS, and modern JavaScript (ES6+).
+                Building responsive and dynamic user interfaces with React.js, Tailwind CSS, and modern JavaScript (ES6+).
               </p>
             </div>
 
@@ -565,33 +570,6 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mt-16">
-            <div>
-              <div className="text-4xl font-bold text-emerald-500 mb-2">
-                25+
-              </div>
-              <div className="text-gray-600">Total Projects</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-500 mb-2">
-                15+
-              </div>
-              <div className="text-gray-600">Happy Clients</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-500 mb-2">
-                50+
-              </div>
-              <div className="text-gray-600">Total Reviews</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-emerald-500 mb-2">
-                550+
-              </div>
-              <div className="text-gray-600">Working Hours</div>
-            </div>
-          </div>
         </div>
       </section>
 
