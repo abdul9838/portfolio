@@ -8,23 +8,50 @@ import {
   Mail,
   Monitor,
   Server,
+  X,
+  Menu,
+  Phone,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
 
-const Portfolio = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const emptyData = {
+  name: "",
+  email: "",
+  contact: "",
+  message: "",
+};
+
+export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [formData, setFormData] = useState(emptyData);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const ids = [
+        "home",
+        "skills",
+        "experience",
+        "education",
+        "services",
+        "portfolio",
+        "contact",
+      ];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el) {
+          const { top, bottom } = el.getBoundingClientRect();
+          if (top <= 100 && bottom >= 100) {
+            setActiveSection(id);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const navLinks = [
@@ -40,21 +67,21 @@ const Portfolio = () => {
     {
       title: "Frontend Development",
       skills: [
-        { name: "HTML/CSS", level: "95%" },
-        { name: "JavaScript", level: "90%" },
-        { name: "React.js", level: "88%" },
-        { name: "Tailwind CSS", level: "92%" },
-        { name: "Redux", level: "85%" },
+        { name: "HTML / CSS", level: 95 },
+        { name: "JavaScript", level: 90 },
+        { name: "React.js", level: 88 },
+        { name: "Tailwind CSS", level: 92 },
+        { name: "Redux", level: 85 },
       ],
     },
     {
       title: "Backend & Tools",
       skills: [
-        { name: "Node.js", level: "60%" },
-        { name: "Express.js", level: "65%" },
-        { name: "Next.js", level: "70%" },
-        { name: "MongoDB", level: "70%" },
-        { name: "Git & GitHub", level: "75%" },
+        { name: "Node.js", level: 60 },
+        { name: "Express.js", level: 65 },
+        { name: "Next.js", level: 70 },
+        { name: "MongoDB", level: 70 },
+        { name: "Git & GitHub", level: 75 },
       ],
     },
   ];
@@ -74,28 +101,28 @@ const Portfolio = () => {
       role: "React.js / Next.js Frontend Developer",
       company: "4Tuners Technology",
       location: "Greater Noida",
-      duration: "July 2025 – January 2026",
+      duration: "Jul 2025 – Jan 2026",
       points: [
-        "Built scalable admin dashboards and enterprise apps using React.js and Redux Toolkit.",
-        "Integrated REST APIs for user management, RBAC, and analytics.",
-        "Implemented advanced filtering & search (price, brand, size, variants).",
-        "Designed analytics dashboards for surveys, bookings, and performance.",
-        "Optimized apps using lazy loading, memoization, and modular architecture.",
-        "Collaborated with backend and product teams for production-ready features.",
+        "Enhanced dashboard performance and scalability, contributing to ~30% faster data processing and improved user retention.",
+        "Integrated REST APIs that streamlined operations, boosting system efficiency by ~25%.",
+        "Implemented advanced filtering & search, increasing user engagement by ~35%.",
+        "Designed analytics dashboards that improved business decision-making speed by ~40%.",
+        "Optimized applications using lazy loading and memoization, reducing load time by ~30%.",
+        "Collaborated with teams to deliver features that supported ~20% growth in product adoption.",
       ],
     },
     {
       id: 2,
       role: "React.js Developer",
-      company: "Growmore Tech",
+      company: "Growmoredigi Codebuilder",
       location: "Lucknow, India",
-      duration: "January 2024 – June 2025",
+      duration: "Jan 2024 – Jun 2025",
       points: [
-        "Built role-based UIs with secure authentication.",
-        "Created reusable components using MUI, Tailwind CSS, and Bootstrap.",
-        "Managed global state using Redux Toolkit and Context API.",
-        "Ensured responsive and cross-browser compatible UI.",
-        "Participated in code reviews and maintained clean code.",
+        "Built role-based UI systems that improved platform security and reduced unauthorized access by ~40%.",
+        "Developed reusable components, reducing development time by ~35% and increasing team productivity.",
+        "Managed global state efficiently, improving application performance by ~25%.",
+        "Enhanced responsiveness and UI consistency, increasing user satisfaction by ~30%.",
+        "Maintained clean code practices, contributing to ~20% reduction in bugs and rework.",
       ],
     },
     {
@@ -103,12 +130,12 @@ const Portfolio = () => {
       role: "Web Developer Intern",
       company: "Analyze Infotech",
       location: "Lucknow, India",
-      duration: "December 2022 – May 2023",
+      duration: "Aug 2022 – Dec 2022",
       points: [
-        "Designed responsive websites using HTML, CSS, and JavaScript.",
-        "Worked on backend features with Python and Django.",
-        "Improved application performance, security, and scalability.",
-        "Contributed to enterprise and client-facing applications.",
+        "Developed responsive websites that improved client engagement by ~25%.",
+        "Worked on backend features that increased system efficiency by ~20%.",
+        "Optimized performance and security, reducing load time by ~30%.",
+        "Contributed to applications that supported ~15% growth in client satisfaction.",
       ],
     },
   ];
@@ -116,32 +143,53 @@ const Portfolio = () => {
   const educationData = [
     {
       id: 1,
-      degree: "Bachelor of Technology in Computer Science",
-      year: "2020 - 2023",
+      degree: "B.Tech in Computer Science",
+      year: "2020 – 2023",
       college: "Khwaja Moinuddin Chisthi Language University, Lucknow",
       description:
         "Graduated with honors. Focused on Software Engineering and Web Development.",
     },
     {
       id: 2,
-      degree: "Diploma from Government Polytechnic, Etawah",
-      year: "2017 - 2020",
+      degree: "Diploma — Government Polytechnic",
+      year: "2017 – 2020",
       college: "Government Polytechnic, Etawah",
       description: "",
     },
     {
       id: 3,
       degree: "Intermediate",
-      year: "2015 - 2017",
+      year: "2015 – 2017",
       college: "S. L. B. S. Inter College, Deoria",
       description: "",
     },
     {
       id: 4,
       degree: "High School",
-      year: "2013 - 2015",
+      year: "2013 – 2015",
       college: "Kishan Intermediate College, Deoria",
       description: "",
+    },
+  ];
+
+  const services = [
+    {
+      icon: <Monitor size={28} />,
+      title: "Frontend Development",
+      desc: "Responsive, dynamic UIs with React.js, Tailwind CSS, and modern ES6+ JavaScript.",
+      num: "01",
+    },
+    {
+      icon: <Code size={28} />,
+      title: "Backend Development",
+      desc: "Secure, scalable APIs and server-side logic with Node.js, Express.js, and MongoDB.",
+      num: "02",
+    },
+    {
+      icon: <Server size={28} />,
+      title: "Full-Stack Applications",
+      desc: "End-to-end solutions integrating frontend and backend, deployed via Vercel or Netlify.",
+      num: "03",
     },
   ];
 
@@ -150,733 +198,640 @@ const Portfolio = () => {
       id: 1,
       title: "Emstell",
       description:
-        "A modern software company website showcasing digital services, product development, and innovative tech solutions for businesses.",
+        "Modern software company website showcasing digital services and innovative tech solutions for businesses.",
       image: "/assets/emstell.webp",
       link: "https://emstell.vercel.app/",
-      tags: ["Next.js", "React", "Software Company", "Web Development"],
+      tags: ["Next.js", "React", "Web Dev"],
     },
     {
       id: 2,
       title: "City Cars",
       description:
-        "A car listing app featuring powerful functionality to help to post their car for rent.",
+        "Car listing app with powerful functionality to help users post their cars for rent.",
       image: "/assets/cars.webp",
       link: "https://citycarsa.com/",
       tags: ["React", "Node.js", "Car Rental"],
     },
     {
       id: 3,
+      title: "E-commerce",
+      description:
+        "E-commerce platform with advanced search functionality to help users find products easily.",
+      image: "/assets/gaurastra.webp",
+      link: "https://www.gaurastra.com/",
+      tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
+    },
+    {
+      id: 4,
       title: "Digital Agency",
       description:
-        "A creative digital agency website offering web design, branding, marketing, and development services to help businesses grow online.",
+        "Creative agency website offering web design, branding, and development services.",
       image: "/assets/digital-agency.webp",
       link: "https://digital-agency-one-mu.vercel.app/",
       tags: ["React", "Design", "Marketing"],
     },
     {
-      id: 4,
-      title: "Wood Furniture",
-      description:
-        "A responsive furniture search component that filters and displays products in real-time as users type keywords.",
-      image: "/assets/ecommerce.webp",
-      link: "https://luxe-loom-ecommerce.vercel.app/",
-      tags: ["E-commerce", "React", "Search"],
-    },
-    {
       id: 5,
       title: "Recipe App",
       description:
-        "A recipe app featuring powerful search functionality to help users quickly find, save, and explore delicious meals and cooking ideas.",
+        "Recipe app with powerful search to help users find, save, and explore delicious meals.",
       image: "/assets/recipie.webp",
       link: "https://foodie-theta-cyan.vercel.app/",
       tags: ["React", "API", "Food"],
     },
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    setSubmitting(true);
+    e.preventDefault();
+
+    try {
+      const res = await fetch(
+        "https://script.google.com/macros/s/AKfycbywPEEHkcCIUF4dDxMH4HhH6lGFk21LDxtraIcnGGdBtPZtPLMP9nFxlvrU-TCNZM-8/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            contact: formData.contact,
+            message: formData.message,
+          }),
+        },
+      );
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        setSubmitting(false);
+        alert("Data sent successfully");
+        setFormData(emptyData);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Error saving data");
+    }
+
+    setSubmitting(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({ name: "", email: "", message: "" });
-  };
+  // Shared section-label component
+  const Label = ({ text }) => (
+    <div className="flex items-center gap-3 mb-5">
+      <span className="w-8 h-px bg-[#aaff00] block" />
+      <span
+        className="text-[#aaff00] text-[11px] tracking-[0.16em] uppercase"
+        style={{ fontFamily: "'DM Mono', monospace" }}
+      >
+        {text}
+      </span>
+    </div>
+  );
+
+  const SectionTitle = ({ children }) => (
+    <h2
+      className="text-[#f0ede8] leading-[0.95] tracking-[-2.5px] mb-5"
+      style={{
+        fontFamily: "'DM Serif Display', serif",
+        fontSize: "clamp(36px,5vw,68px)",
+      }}
+    >
+      {children}
+    </h2>
+  );
 
   return (
-    <div className="min-h-screen bg-slate-50 relative overflow-x-hidden">
-      {/* Animated background elements */}
-      {/* <AnimatedBackground /> */}
-      {/* Navigation */}
+    <div
+      className="min-h-screen bg-[#080808] text-[#f0ede8] overflow-x-hidden"
+      style={{ fontFamily: "'Instrument Sans', sans-serif" }}
+    >
+      {/* ══════════════════════════════════════════════
+          NAVBAR
+      ══════════════════════════════════════════════ */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-[#080808]/90 backdrop-blur-xl border-b border-[#1f1f1f]"
+            : ""
+        }`}
+      >
+        <div className="max-w-[1280px] mx-auto px-8 h-[72px] flex items-center justify-between">
+          {/* Logo */}
+          <a
+            href="#home"
+            className="text-[#f0ede8] no-underline text-xl tracking-tight"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
+          >
+            Abdul<span className="text-[#aaff00]">.</span>
+          </a>
 
-      <Navbar
-        scrolled={scrolled}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        navLinks={navLinks}
-      />
-      {/* Hero Section */}
+          {/* Desktop links */}
+          <ul className="hidden lg:flex items-center gap-9 list-none m-0 p-0">
+            {navLinks.map((l) => (
+              <li key={l.name}>
+                <a
+                  href={l.href}
+                  className={`no-underline text-[11px] tracking-[0.12em] uppercase transition-colors duration-200 ${
+                    activeSection === l.href.slice(1)
+                      ? "text-[#aaff00]"
+                      : "text-[#a8a7a7] hover:text-[#f0ede8]"
+                  }`}
+                  style={{ fontFamily: "'DM Mono', monospace" }}
+                >
+                  {l.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop CTA */}
+          <a
+            href="/assets/Abdul_Ahad_ReactJS.pdf"
+            download
+            className="hidden lg:flex items-center gap-2 bg-[#aaff00] text-[#080808] no-underline px-5 py-3 rounded-sm text-[11px] tracking-[0.08em] uppercase font-medium transition-all duration-200 hover:opacity-80 hover:-translate-y-px"
+            style={{ fontFamily: "'DM Mono', monospace" }}
+          >
+            <Download size={13} /> Resume
+          </a>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden text-[#f0ede8] bg-transparent border-none cursor-pointer p-1"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 bg-[#080808] flex flex-col items-center justify-center gap-10">
+          {navLinks.map((l) => (
+            <a
+              key={l.name}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="text-[#f0ede8] no-underline hover:text-[#aaff00] transition-colors duration-200 text-[40px] tracking-[-1px]"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              {l.name}
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════ */}
       <section
         id="home"
-        aria-labelledby="hero-heading"
-        className="relative pt-32 pb-20 min-h-screen flex items-center"
+        className="relative min-h-screen flex items-center justify-center pt-[72px] overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-8 animate-fade-in">
-              <div className="inline-block">
+        {/* 🔥 Background Glow */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-[500px] h-[500px] bg-red-400/50 opacity-20 blur-[140px] rounded-full animate-pulse" />
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-[350px] h-[350px] bg-purple-500 opacity-10 blur-[120px] rounded-full animate-[spin_20s_linear_infinite]" />
+        </div>
+
+        {/* Content */}
+        <div className="max-w-[900px] mx-auto px-6 py-24 text-center relative z-10 anim-slide-up">
+          {/* Top badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {["Available for work", "React · Next.js", "Node · MongoDB"].map(
+              (text, idx) => (
                 <span
-                  className="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold tracking-wide animate-bounce"
-                  role="status"
+                  key={idx}
+                  className="px-4 py-2 text-[11px] tracking-[0.1em] uppercase border border-[#2a2a2a] text-[#aaff00]"
                 >
-                  👋 Welcome to my portfolio
+                  {text}
                 </span>
-              </div>
+              ),
+            )}
+          </div>
 
-              <h1
-                id="hero-heading"
-                className="text-5xl lg:text-6xl font-black leading-tight"
+          {/* Heading */}
+          <h1
+            className="text-[#f0ede8] leading-[0.95] tracking-[-3px] mb-8"
+            style={{
+              fontFamily: "'DM Serif Display', serif",
+              fontSize: "clamp(52px,8vw,100px)",
+            }}
+          >
+            Hello,
+            <br />
+            I'm <span className="text-[#aaff00]">Abdul</span>
+            <br />
+            <em>Ahad.</em>
+          </h1>
+
+          {/* Description */}
+          <p className="text-[17px] leading-[1.75] text-[#a8a7a7] max-w-[600px] mx-auto mb-12">
+            A passionate{" "}
+            <strong className="text-[#f0ede8] font-semibold">
+              Web Developer
+            </strong>{" "}
+            crafting seamless digital experiences. With{" "}
+            <strong className="text-[#aaff00] font-semibold">2.5+ years</strong>{" "}
+            building modern, scalable web applications.
+          </p>
+
+          {/* Actions */}
+          <div className="flex flex-wrap justify-center items-center gap-4 mb-16">
+            <a
+              href="/assets/Abdul_Ahad_ReactJS.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-[#aaff00] text-[#080808] px-7 py-4 rounded-sm text-[12px] tracking-[0.08em] uppercase font-medium transition-all duration-200 hover:opacity-80 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(170,255,0,0.25)]"
+              style={{ fontFamily: "'DM Mono', monospace" }}
+            >
+              <Download size={14} /> Download CV
+            </a>
+
+            {[
+              {
+                href: "https://github.com/abdul9838",
+                icon: <Github size={18} />,
+                label: "GitHub",
+              },
+              {
+                href: "tel:+91 9838848691",
+                icon: <Phone size={18} />,
+                label: "Phone",
+              },
+              {
+                href: "https://www.linkedin.com/in/abdul-ahad-04850a248/",
+                icon: <Linkedin size={18} />,
+                label: "LinkedIn",
+              },
+              {
+                href: "mailto:abdulahed9838@gmail.com",
+                icon: <Mail size={18} />,
+                label: "Email",
+              },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-12 h-12 border border-[#2a2a2a] rounded-sm flex items-center justify-center text-[#a8a7a7] transition-all duration-200 hover:border-[#aaff00] hover:text-[#aaff00] hover:bg-[rgba(170,255,0,0.07)]"
               >
-                <span className="text-slate-800">Hello There!</span>
-                <br />
-                <span className="text-slate-700">I'm </span>
-                <span className="bg-gradient-to-r from-emerald-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent animate-gradient bg-300%">
-                  Abdul Ahad
-                </span>
-              </h1>
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <p className="text-slate-600 text-xl max-w-xl">
-                A passionate{" "}
-                <strong className="text-emerald-600 font-semibold">
-                  Web Developer
-                </strong>{" "}
-                who loves crafting seamless digital experiences. With{" "}
-                <strong className="text-emerald-600 font-semibold">
-                  2.5+ years
-                </strong>{" "}
-                of experience in designing and developing modern web
-                applications.
-              </p>
+      {/* Divider */}
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
 
-              {/* CTA */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="/assets/Abdul_Ahad_ReactJS.pdf"
-                  download="Abdul_Ahad_ReactJS.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Download Abdul Ahad CV"
-                  className="flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-8 py-4 rounded-full hover:shadow-2xl hover:shadow-emerald-500/50 transition-all hover:scale-105 font-semibold text-lg group focus:outline-none focus:ring-4 focus:ring-emerald-300"
-                >
-                  <Download
-                    size={22}
-                    aria-hidden="true"
-                    className="group-hover:animate-bounce"
-                  />
-                  Download CV
-                </a>
+      {/* ══════════════════════════════════════════════
+          SKILLS
+      ══════════════════════════════════════════════ */}
+      <section id="skills" className="py-32">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="mb-20">
+            <Label text="My Expertise" />
+            <SectionTitle>
+              Technical <em className="italic text-[#aaff00]">Skills.</em>
+            </SectionTitle>
+            <p className="text-[16px] text-[#a8a7a7] mt-5 max-w-md leading-[1.7]">
+              Proficiency across technologies and frameworks I ship with every
+              day.
+            </p>
+          </div>
 
-                {/* Social Links */}
+          {/* Skills panel grid */}
+          <div className="grid lg:grid-cols-2 gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden mb-10">
+            {skillsData.map((group) => (
+              <div key={group.title} className="bg-[#0e0e0e] p-10">
                 <div
-                  className="flex gap-3"
-                  role="navigation"
-                  aria-label="Social media links"
+                  className="text-[#aaff00] text-[11px] tracking-[0.14em] uppercase mb-10 flex items-center gap-3"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
                 >
-                  {[
-                    {
-                      href: "https://github.com/abdul9838",
-                      icon: <Github size={22} aria-hidden="true" />,
-                      label: "GitHub",
-                    },
-                    {
-                      href: "https://www.linkedin.com/in/abdul-ahad-04850a248",
-                      icon: <Linkedin size={22} aria-hidden="true" />,
-                      label: "LinkedIn",
-                    },
-                    {
-                      href: "mailto:abdulahadansari810@gmail.com",
-                      icon: <Mail size={22} aria-hidden="true" />,
-                      label: "Send Email",
-                    },
-                  ].map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={item.label}
-                      className="flex items-center justify-center w-14 h-14 border-2 border-slate-300 rounded-full hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-600 transition-all hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                    >
-                      <span className="group-hover:scale-110 transition">
-                        {item.icon}
-                      </span>
-                    </a>
+                  <span className="w-5 h-px bg-[#aaff00] block" /> {group.title}
+                </div>
+                <div className="space-y-8">
+                  {group.skills.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between items-baseline mb-3">
+                        <span className="text-[14px] font-medium text-[#d4d1cc]">
+                          {skill.name}
+                        </span>
+                        <span
+                          className="text-[12px] text-[#444]"
+                          style={{ fontFamily: "'DM Mono', monospace" }}
+                        >
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div className="h-px bg-[#1f1f1f] w-full overflow-hidden">
+                        <div
+                          className="h-full bg-[#aaff00] anim-bar"
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
-
-              {/* Stats */}
-              <div
-                className="grid grid-cols-3 gap-6"
-                role="list"
-                aria-label="Professional statistics"
-              >
-                {[
-                  { label: "Projects", value: "10+" },
-                  { label: "Experience", value: "2.5+ Yrs" },
-                ].map((stat, idx) => (
-                  <div
-                    key={stat.label}
-                    role="listitem"
-                    style={{ animationDelay: `${idx * 0.2}s` }}
-                  >
-                    <div className="text-3xl font-black bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                      {stat.value}
-                    </div>
-                    <div className="text-slate-500 text-sm font-medium mt-1">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right - Profile Image */}
-            <div
-              className="flex justify-center lg:justify-end animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <div className="relative group">
-                {/* Decorative gradients */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-400 via-cyan-400 to-violet-400 opacity-75 blur-2xl group-hover:opacity-100 transition animate-spin-slow"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-4 rounded-full bg-gradient-to-bl from-cyan-400 via-emerald-400 to-violet-400 opacity-50 blur-xl animate-spin-reverse"
-                />
-
-                <div className="relative w-96 h-96">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 animate-pulse"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-3 rounded-full bg-gradient-to-bl from-cyan-500 to-emerald-500"
-                  />
-
-                  <div className="absolute inset-6 rounded-full overflow-hidden border-4 border-white shadow-2xl">
-                    <img
-                      src="/assets/Profile.webp"
-                      alt="Portrait of Abdul Ahad, Web Developer"
-                      width="384"
-                      height="384"
-                      loading="lazy"
-                      decoding="async"
-                      fetchPriority="high"
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
-                    />
-                  </div>
-                </div>
-
-                {/* Floating icons */}
-                <div
-                  aria-hidden="true"
-                  className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-200 animate-float"
-                >
-                  <Code className="text-emerald-500" size={32} />
-                </div>
-
-                <div
-                  aria-hidden="true"
-                  className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-200 animate-float"
-                  style={{ animationDelay: "1s" }}
-                >
-                  <Server className="text-cyan-500" size={32} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section
-        id="skills"
-        aria-labelledby="skills-heading"
-        className="py-24 relative"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-20 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              My Expertise
-            </span>
-
-            <h2 id="skills-heading" className="text-5xl font-black mt-3 mb-5">
-              <span className="text-slate-800">Technical </span>
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Skills
-              </span>
-            </h2>
-
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-              Proficiency levels in various technologies and frameworks I work
-              with
-            </p>
-          </header>
-
-          {/* Skills Grid */}
-          <div
-            className="grid lg:grid-cols-2 gap-12 mb-16"
-            role="list"
-            aria-label="Technical skill categories"
-          >
-            {skillsData.map((group, index) => (
-              <article
-                key={group.title}
-                role="listitem"
-                className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all border border-slate-100 animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <h3 className="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="w-2 h-8 bg-gradient-to-b from-emerald-500 to-cyan-500 rounded-full"
-                  />
-                  {group.title}
-                </h3>
-
-                <ul className="space-y-7" role="list">
-                  {group.skills.map((skill) => {
-                    const value = parseInt(skill.level);
-
-                    return (
-                      <li key={skill.name} className="group">
-                        <div className="flex justify-between mb-3">
-                          <span className="text-slate-700 font-semibold text-lg">
-                            {skill.name}
-                          </span>
-
-                          <span
-                            className="text-emerald-600 font-bold text-lg"
-                            aria-label={`${skill.name} proficiency ${skill.level}`}
-                          >
-                            {skill.level}
-                          </span>
-                        </div>
-
-                        {/* Progress bar */}
-                        <div
-                          className="relative w-full h-3 bg-slate-200 rounded-full overflow-hidden"
-                          role="progressbar"
-                          aria-valuenow={value}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                          aria-label={`${skill.name} proficiency`}
-                        >
-                          <div
-                            className="absolute h-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-500 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-emerald-500/50 animate-gradient bg-300%"
-                            style={{ width: skill.level }}
-                          />
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </article>
             ))}
           </div>
 
-          {/* Additional Skills */}
-          <div
-            className="text-center animate-fade-in"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <h3 className="text-2xl font-bold text-slate-800 mb-8">
-              Additional Technologies
-            </h3>
-
-            <ul
-              className="flex flex-wrap justify-center gap-3"
-              role="list"
-              aria-label="Additional technologies"
-            >
-              {additionalSkills.map((tech, idx) => (
-                <li key={tech}>
-                  <span
-                    className="px-6 py-3 bg-gradient-to-r from-emerald-50 to-cyan-50 text-emerald-700 rounded-full text-sm font-semibold border border-emerald-200 hover:border-emerald-400 hover:shadow-lg hover:scale-105 transition-all cursor-default"
-                    style={{ animationDelay: `${idx * 0.05}s` }}
-                  >
-                    {tech}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section
-        id="experience"
-        aria-labelledby="experience-heading"
-        className="py-24 bg-white relative"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-20 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              Career Journey
-            </span>
-
-            <h2
-              id="experience-heading"
-              className="text-5xl font-black mt-3 mb-5"
-            >
-              <span className="text-slate-800">Work </span>
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Experience
-              </span>
-            </h2>
-          </header>
-
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical timeline line */}
+          {/* Additional skills */}
+          <div>
             <div
-              aria-hidden="true"
-              className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-cyan-500 hidden md:block"
-            />
-
-            <ol
-              className="space-y-12"
-              role="list"
-              aria-label="Professional work experience timeline"
+              className="text-[#444] text-[10px] tracking-[0.16em] uppercase mb-5"
+              style={{ fontFamily: "'DM Mono', monospace" }}
             >
-              {experienceData.map((exp, idx) => (
-                <li
-                  key={exp.id}
-                  role="listitem"
-                  className="relative animate-fade-in"
-                  style={{ animationDelay: `${idx * 0.2}s` }}
+              Additional Technologies
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {additionalSkills.map((tech) => (
+                <span
+                  key={tech}
+                  className="text-[#a8a7a7] border border-[#2a2a2a] px-4 py-2 rounded-sm cursor-default text-[11px] tracking-[0.08em] uppercase transition-all duration-200 hover:border-[#aaff00] hover:text-[#aaff00] hover:bg-[rgba(170,255,0,0.05)]"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
                 >
-                  {/* Timeline dot */}
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-6 w-5 h-5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full border-4 border-white shadow-lg hidden md:block"
-                  />
-
-                  <article className="md:ml-20 bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all border border-emerald-100 group">
-                    <header className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-slate-800 group-hover:text-emerald-600 transition">
-                          {exp.role}
-                        </h3>
-
-                        <p className="text-emerald-600 font-semibold text-lg flex items-center gap-2 mt-1">
-                          <span className="font-semibold">{exp.company}</span>
-                          <span aria-hidden="true">·</span>
-                          <span>{exp.location}</span>
-                        </p>
-                      </div>
-
-                      <time
-                        className="px-4 py-2 bg-white text-slate-600 rounded-full text-sm font-medium shadow-md whitespace-nowrap"
-                        aria-label={`Employment duration ${exp.duration}`}
-                      >
-                        {exp.duration}
-                      </time>
-                    </header>
-
-                    <ul
-                      className="space-y-3 mt-6"
-                      role="list"
-                      aria-label={`Responsibilities at ${exp.company}`}
-                    >
-                      {exp.points.map((point, index) => (
-                        <li
-                          key={index}
-                          className="flex items-start gap-3 text-slate-700"
-                        >
-                          <span
-                            aria-hidden="true"
-                            className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"
-                          />
-
-                          <span className="leading-relaxed">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                </li>
+                  {tech}
+                </span>
               ))}
-            </ol>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Education Section */}
-      <section
-        id="education"
-        aria-labelledby="education-heading"
-        className="py-24 bg-gradient-to-b from-slate-50 to-white relative"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-20 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              Academic Background
-            </span>
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
 
-            <h2
-              id="education-heading"
-              className="text-5xl font-black mt-3 mb-5"
-            >
-              <span className="text-slate-800">My </span>
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Education
-              </span>
-            </h2>
-          </header>
+      {/* ══════════════════════════════════════════════
+          EXPERIENCE
+      ══════════════════════════════════════════════ */}
+      <section id="experience" className="py-32 bg-[#060606]">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="mb-20">
+            <Label text="Career Journey" />
+            <SectionTitle>
+              Work <em className="italic text-[#aaff00]">Experience.</em>
+            </SectionTitle>
+          </div>
 
-          {/* Education Grid */}
-          <div
-            className="grid md:grid-cols-2 gap-8"
-            role="list"
-            aria-label="Educational qualifications"
-          >
-            {educationData.map((edu, idx) => (
-              <article
-                key={edu.id}
-                role="listitem"
-                className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all border border-slate-100 group animate-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+          <div className="flex flex-col gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden">
+            {experienceData.map((exp, idx) => (
+              <div
+                key={exp.id}
+                className="bg-[#0a0a0a] grid md:grid-cols-[220px_1fr] group hover:bg-[#0f0f0f] transition-colors duration-300"
               >
-                <header className="flex items-start gap-4 mb-4">
-                  {/* Decorative Icon */}
-                  <div
-                    aria-hidden="true"
-                    className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition"
-                  >
-                    <span className="text-white text-2xl font-black">🎓</span>
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="font-bold text-xl text-slate-800 group-hover:text-emerald-600 transition mb-2">
-                      {edu.degree}
-                    </h3>
-
-                    <time
-                      className="text-emerald-600 font-semibold text-sm mb-1 block"
-                      aria-label={`Completed in ${edu.year}`}
+                {/* Left meta */}
+                <div className="p-8 md:border-r border-[#1f1f1f] flex flex-col justify-between gap-6">
+                  <div>
+                    <div
+                      className="text-[#aaff00] text-[10px] tracking-[0.12em] uppercase mb-4"
+                      style={{ fontFamily: "'DM Mono', monospace" }}
                     >
-                      {edu.year}
-                    </time>
+                      0{idx + 1}
+                    </div>
+                    <div
+                      className="text-[#444] text-[11px] tracking-[0.06em] leading-[1.6]"
+                      style={{ fontFamily: "'DM Mono', monospace" }}
+                    >
+                      {exp.duration}
+                    </div>
                   </div>
-                </header>
+                  <div>
+                    <div className="text-[13px] font-semibold text-[#d4d1cc]">
+                      {exp.company}
+                    </div>
+                    <div
+                      className="text-[#444] text-[10px] tracking-[0.06em] mt-1"
+                      style={{ fontFamily: "'DM Mono', monospace" }}
+                    >
+                      {exp.location}
+                    </div>
+                  </div>
+                </div>
 
-                <p className="text-slate-700 font-medium mb-2">{edu.college}</p>
+                {/* Right content */}
+                <div className="p-8">
+                  <h3
+                    className="text-[#f0ede8] mb-6 tracking-[-0.5px] group-hover:text-[#aaff00] transition-colors duration-300 text-[22px]"
+                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                  >
+                    {exp.role}
+                  </h3>
+                  <ul className="space-y-3">
+                    {exp.points.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-4 text-[14px] text-[#a8a7a7] leading-[1.7]"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-[#aaff00] mt-[10px] flex-shrink-0 block" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
+
+      {/* ══════════════════════════════════════════════
+          EDUCATION
+      ══════════════════════════════════════════════ */}
+      <section id="education" className="py-32">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="mb-20">
+            <Label text="Academic Background" />
+            <SectionTitle>
+              My <em className="italic text-[#aaff00]">Education.</em>
+            </SectionTitle>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden">
+            {educationData.map((edu) => (
+              <div
+                key={edu.id}
+                className="bg-[#0e0e0e] p-8 group hover:bg-[#111] transition-colors duration-300"
+              >
+                <div
+                  className="text-[#aaff00] text-[11px] tracking-[0.1em] uppercase mb-4"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
+                >
+                  {edu.year}
+                </div>
+                <h3
+                  className="text-[#f0ede8] text-[20px] tracking-[-0.5px] mb-2 group-hover:text-[#aaff00] transition-colors duration-300"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  {edu.degree}
+                </h3>
+                <p className="text-[13px] text-[#a8a7a7] mb-3 leading-[1.6]">
+                  {edu.college}
+                </p>
                 {edu.description && (
-                  <p className="text-slate-600 text-sm bg-slate-50 px-4 py-2 rounded-xl">
+                  <p className="text-[12px] text-[#3a3a3a] border-l-2 border-[#aaff00]/30 pl-4 leading-[1.7]">
                     {edu.description}
                   </p>
                 )}
-              </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section
-        id="services"
-        aria-labelledby="services-heading"
-        className="py-24 bg-white relative"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-20 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              What I Offer
-            </span>
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
 
-            <h2 id="services-heading" className="text-5xl font-black mt-3 mb-5">
-              <span className="text-slate-800">My </span>
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Services
-              </span>
-            </h2>
-
-            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+      {/* ══════════════════════════════════════════════
+          SERVICES
+      ══════════════════════════════════════════════ */}
+      <section id="services" className="py-32 bg-[#060606]">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="mb-20">
+            <Label text="What I Offer" />
+            <SectionTitle>
+              My <em className="italic text-[#aaff00]">Services.</em>
+            </SectionTitle>
+            <p className="text-[16px] text-[#a8a7a7] mt-5 max-w-md leading-[1.7]">
               Specialized in building modern, scalable, and user-friendly web
-              applications
+              applications.
             </p>
-          </header>
+          </div>
 
-          {/* Services Grid */}
-          <div
-            className="grid md:grid-cols-3 gap-8"
-            role="list"
-            aria-label="Web development services"
-          >
-            {[
-              {
-                icon: <Monitor size={36} aria-hidden="true" />,
-                title: "Frontend Development",
-                description:
-                  "Building responsive and dynamic user interfaces with React.js, Tailwind CSS, and modern JavaScript (ES6+).",
-                gradient: "from-emerald-500 to-cyan-500",
-              },
-              {
-                icon: <Code size={36} aria-hidden="true" />,
-                title: "Backend Development",
-                description:
-                  "Creating secure, scalable APIs and server-side logic with Node.js, Express.js, and MongoDB.",
-                gradient: "from-cyan-500 to-violet-500",
-              },
-              {
-                icon: <Server size={36} aria-hidden="true" />,
-                title: "Full-Stack Applications",
-                description:
-                  "Delivering complete solutions, integrating frontend and backend, deploying with Vercel, Netlify, or GitHub Actions.",
-                gradient: "from-violet-500 to-emerald-500",
-              },
-            ].map((service) => (
-              <article
-                key={service.title}
-                role="listitem"
-                className="bg-gradient-to-br from-slate-50 to-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all border border-slate-100 group animate-fade-in"
+          <div className="grid md:grid-cols-3 gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden">
+            {services.map((s) => (
+              <div
+                key={s.title}
+                className="bg-[#0e0e0e] p-10 group hover:bg-[#111] transition-colors duration-300"
               >
-                {/* Icon */}
                 <div
-                  aria-hidden="true"
-                  className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}
+                  className="text-[#333] text-[10px] tracking-[0.14em] uppercase mb-8"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
                 >
-                  <span className="text-white">{service.icon}</span>
+                  {s.num}
                 </div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-slate-800 mb-4 group-hover:text-emerald-600 transition">
-                  {service.title}
+                <div className="text-[#aaff00] mb-6 transition-transform duration-300 group-hover:translate-x-1">
+                  {s.icon}
+                </div>
+                <h3
+                  className="text-[#f0ede8] text-[22px] tracking-[-0.5px] mb-4 group-hover:text-[#aaff00] transition-colors duration-300"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  {s.title}
                 </h3>
-
-                {/* Description */}
-                <p className="text-slate-600 leading-relaxed">
-                  {service.description}
+                <p className="text-[14px] text-[#a8a7a7] leading-[1.75]">
+                  {s.desc}
                 </p>
-              </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section
-        id="portfolio"
-        aria-labelledby="portfolio-heading"
-        className="py-24 bg-gradient-to-b from-slate-50 to-white relative"
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-20 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              Recent Work
-            </span>
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
 
-            <h2
-              id="portfolio-heading"
-              className="text-5xl font-black mt-3 mb-5"
+      {/* ══════════════════════════════════════════════
+          PORTFOLIO
+      ══════════════════════════════════════════════ */}
+      <section id="portfolio" className="py-32">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20">
+            <div>
+              <Label text="Recent Work" />
+              <SectionTitle>
+                Selected <em className="italic text-[#aaff00]">Projects.</em>
+              </SectionTitle>
+            </div>
+            <div
+              className="text-[#444] text-[12px] tracking-[0.06em]"
+              style={{ fontFamily: "'DM Mono', monospace" }}
             >
-              <span className="text-slate-800">My </span>
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Portfolio
-              </span>
-            </h2>
-          </header>
+              {portfolioProjects.length} projects shipped
+            </div>
+          </div>
 
-          {/* Portfolio Grid */}
-          <div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            role="list"
-            aria-label="Portfolio projects"
-          >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden">
             {portfolioProjects.map((project, idx) => (
               <article
                 key={project.id}
-                role="listitem"
-                className="bg-white rounded-3xl overflow-hidden shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all group animate-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
+                className={`bg-[#0a0a0a] group relative overflow-hidden ${idx === 0 ? "md:col-span-2 lg:col-span-2" : ""}`}
               >
                 {/* Image */}
-                <div className="relative overflow-hidden h-56">
+                <div className="relative overflow-hidden aspect-video">
                   <img
                     src={project.image}
-                    alt={`${project.title} project preview`}
+                    alt={`${project.title} preview`}
                     loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{ filter: "grayscale(30%)" }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.filter = "grayscale(0%)")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.filter = "grayscale(30%)")
+                    }
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
 
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                  />
-
+                  {/* External link button */}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Open ${project.title} project`}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-emerald-600 p-4 rounded-full shadow-xl opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    aria-label={`Open ${project.title}`}
+                    className="absolute top-4 right-4 w-10 h-10 bg-[#aaff00] rounded-sm flex items-center justify-center text-[#080808] no-underline opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300"
                   >
-                    <ExternalLink size={24} aria-hidden="true" />
+                    <ExternalLink size={16} />
                   </a>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="font-bold text-xl text-slate-800 mb-2 group-hover:text-emerald-600 transition">
+                <div className="p-7">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[#aaff00] text-[10px] tracking-[0.08em] uppercase bg-[rgba(170,255,0,0.08)] border border-[rgba(170,255,0,0.15)] px-3 py-1 rounded-sm"
+                        style={{ fontFamily: "'DM Mono', monospace" }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3
+                    className="text-[#f0ede8] text-[20px] tracking-[-0.5px] mb-2 group-hover:text-[#aaff00] transition-colors duration-300"
+                    style={{ fontFamily: "'DM Serif Display', serif" }}
+                  >
                     {project.title}
                   </h3>
-
-                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-[13px] text-[#a8a7a7] leading-[1.7] mb-5">
                     {project.description}
                   </p>
-
-                  {/* Tags */}
-                  <ul
-                    className="flex flex-wrap gap-2 mb-4"
-                    role="list"
-                    aria-label={`${project.title} technologies`}
-                  >
-                    {project.tags.map((tag) => (
-                      <li key={tag}>
-                        <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-full">
-                          {tag}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Project Link */}
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`View ${project.title} project`}
-                    className="text-emerald-600 font-semibold hover:text-emerald-700 flex items-center gap-2 group/link focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="flex items-center gap-2 text-[#444] no-underline text-[11px] tracking-[0.08em] uppercase transition-colors duration-200 hover:text-[#aaff00] group/link w-fit"
+                    style={{ fontFamily: "'DM Mono', monospace" }}
                   >
                     View Project
                     <ArrowRight
-                      size={18}
-                      aria-hidden="true"
-                      className="group-hover/link:translate-x-1 transition"
+                      size={13}
+                      className="transition-transform duration-200 group-hover/link:translate-x-1"
                     />
                   </a>
                 </div>
@@ -886,292 +841,233 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section
-        id="contact"
-        aria-labelledby="contact-heading"
-        className="py-24 bg-white relative"
-      >
-        <div className="max-w-4xl mx-auto px-6">
-          {/* Title */}
-          <header className="text-center mb-16 animate-fade-in">
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">
-              Get In Touch
-            </span>
+      <div className="h-px bg-[#1f1f1f] max-w-[1280px] mx-auto" />
 
-            <h2 id="contact-heading" className="text-5xl font-black mt-3 mb-5">
-              <span className="bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent">
-                Contact
-              </span>{" "}
-              <span className="text-slate-800">Me</span>
-            </h2>
+      {/* ══════════════════════════════════════════════
+          CONTACT
+      ══════════════════════════════════════════════ */}
+      <section id="contact" className="py-32 bg-[#060606]">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="grid lg:grid-cols-[1fr_560px] gap-20 items-start">
+            {/* Left info */}
+            <div>
+              <Label text="Get In Touch" />
+              <SectionTitle>
+                Let's <em className="italic text-[#aaff00]">Work</em>
+                <br />
+                Together.
+              </SectionTitle>
+              <p className="text-[16px] text-[#a8a7a7] leading-[1.75] mb-12 max-w-sm mt-5">
+                Have a project in mind or want to discuss a collaboration? I'd
+                love to hear from you.
+              </p>
 
-            <p id="contact-description" className="text-slate-600 text-lg">
-              Let's discuss your next project or collaboration
-            </p>
-          </header>
-
-          {/* Contact Form */}
-          <form
-            onSubmit={handleSubmit}
-            aria-describedby="contact-description"
-            className="space-y-6 animate-fade-in"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Name */}
-              <div className="flex flex-col">
-                <label htmlFor="name" className="sr-only">
-                  Your Name
-                </label>
-
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  autoComplete="name"
-                  required
-                  aria-required="true"
-                  className="w-full p-5 border-2 border-slate-200 rounded-2xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-300 transition-all bg-slate-50 hover:bg-white font-medium"
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col">
-                <label htmlFor="email" className="sr-only">
-                  Your Email
-                </label>
-
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  autoComplete="email"
-                  required
-                  aria-required="true"
-                  className="w-full p-5 border-2 border-slate-200 rounded-2xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-300 transition-all bg-slate-50 hover:bg-white font-medium"
-                />
+              <div className="flex flex-col gap-5">
+                {[
+                  {
+                    icon: <Phone size={15} />,
+                    label: "Phone",
+                    value: "+91 9838848691",
+                    href: "tel:+91 9838848691",
+                  },
+                  {
+                    icon: <Mail size={15} />,
+                    label: "Email",
+                    value: "abdulahadansari810@gmail.com",
+                    href: "mailto:abdulahadansari810@gmail.com",
+                  },
+                  {
+                    icon: <Github size={15} />,
+                    label: "GitHub",
+                    value: "github.com/abdul9838",
+                    href: "https://github.com/abdul9838",
+                  },
+                  {
+                    icon: <Linkedin size={15} />,
+                    label: "LinkedIn",
+                    value: "linkedin.com/in/abdul-ahad",
+                    href: "https://www.linkedin.com/in/abdul-ahad-352b203b6/",
+                  },
+                ].map((c) => (
+                  <a
+                    key={c.label}
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 no-underline group/link"
+                  >
+                    <div className="w-9 h-9 border border-[#2a2a2a] rounded-sm flex items-center justify-center text-[#444] transition-all duration-200 group-hover/link:border-[#aaff00] group-hover/link:text-[#aaff00] group-hover/link:bg-[rgba(170,255,0,0.07)]">
+                      {c.icon}
+                    </div>
+                    <div>
+                      <div
+                        className="text-[#333] text-[10px] tracking-[0.1em] uppercase mb-0.5"
+                        style={{ fontFamily: "'DM Mono', monospace" }}
+                      >
+                        {c.label}
+                      </div>
+                      <div className="text-[13px] text-[#666] transition-colors duration-200 group-hover/link:text-[#f0ede8]">
+                        {c.value}
+                      </div>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Message */}
-            <div className="flex flex-col">
-              <label htmlFor="message" className="sr-only">
-                Your Message
-              </label>
-
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Your Message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows={6}
-                required
-                aria-required="true"
-                className="w-full p-5 border-2 border-slate-200 rounded-2xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-300 transition-all resize-none bg-slate-50 hover:bg-white font-medium"
-              />
-            </div>
-
-            {/* Submit */}
-            <div className="text-center">
-              <button
-                type="submit"
-                aria-label="Send contact message"
-                className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-12 py-4 rounded-full hover:shadow-2xl hover:shadow-emerald-500/50 transition-all hover:scale-105 font-bold text-lg inline-flex items-center gap-3 group focus:outline-none focus:ring-4 focus:ring-emerald-300"
+            {/* Right — form */}
+            <div className="border border-[#1f1f1f] rounded-sm overflow-hidden">
+              <div className="bg-[#0e0e0e] px-8 py-5 border-b border-[#1f1f1f]">
+                <span
+                  className="text-[#444] text-[10px] tracking-[0.12em] uppercase"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
+                >
+                  Send a message
+                </span>
+              </div>
+              <form
+                onSubmit={handleSubmit}
+                className="bg-[#0a0a0a] p-8 space-y-5"
               >
-                Send Message
-                <ArrowRight
-                  size={22}
-                  aria-hidden="true"
-                  className="group-hover:translate-x-1 transition"
-                />
-              </button>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {[
+                    {
+                      id: "name",
+                      type: "text",
+                      label: "Name",
+                      placeholder: "Your name",
+                      autoComplete: "name",
+                    },
+                    {
+                      id: "email",
+                      type: "email",
+                      label: "Email",
+                      placeholder: "your@email.com",
+                      autoComplete: "email",
+                    },
+                  ].map((f) => (
+                    <div key={f.id}>
+                      <label
+                        htmlFor={f.id}
+                        className="block text-[#444] text-[10px] tracking-[0.1em] uppercase mb-2"
+                        style={{ fontFamily: "'DM Mono', monospace" }}
+                      >
+                        {f.label}
+                      </label>
+                      <input
+                        id={f.id}
+                        type={f.type}
+                        name={f.id}
+                        placeholder={f.placeholder}
+                        autoComplete={f.autoComplete}
+                        value={formData[f.id]}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full bg-[#111] border border-[#2a2a2a] rounded-sm px-4 py-3 text-[14px] text-[#d4d1cc] placeholder-[#333] outline-none transition-all duration-200 focus:border-[#aaff00] focus:bg-[#0e0e0e]"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact"
+                    className="block text-[#444] text-[10px] tracking-[0.1em] uppercase mb-2"
+                    style={{ fontFamily: "'DM Mono', monospace" }}
+                  >
+                    Contact
+                  </label>
+                  <input
+                    id="contact"
+                    type="text"
+                    name="contact"
+                    placeholder="+91 xxxxx-xxxxx"
+                    autoComplete="contact"
+                    value={formData.contact}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full bg-[#111] border border-[#2a2a2a] rounded-sm px-4 py-3 text-[14px] text-[#d4d1cc] placeholder-[#333] outline-none transition-all duration-200 focus:border-[#aaff00] focus:bg-[#0e0e0e]"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-[#444] text-[10px] tracking-[0.1em] uppercase mb-2"
+                    style={{ fontFamily: "'DM Mono', monospace" }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project..."
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={6}
+                    required
+                    className="w-full bg-[#111] border border-[#2a2a2a] rounded-sm px-4 py-3 text-[14px] text-[#d4d1cc] placeholder-[#333] outline-none transition-all duration-200 focus:border-[#aaff00] focus:bg-[#0e0e0e] resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full bg-[#aaff00] text-[#080808] py-4 rounded-sm text-[12px] tracking-[0.08em] uppercase font-medium flex items-center justify-center gap-3 transition-all duration-200 hover:opacity-85 hover:shadow-[0_12px_40px_rgba(170,255,0,0.2)] cursor-pointer border-none"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
+                >
+                  {submitting ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 border-2 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                      <span className="text-sm font-medium text-gray-700">
+                        Sending
+                      </span>
+                    </div>
+                  ) : (
+                    <>
+                      Send Message <ArrowRight size={14} />
+                    </>
+                  )}
+                </button>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-14 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
-        </div>
+      {/* ══════════════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════════════ */}
+      <footer className="border-t border-[#1f1f1f] py-10">
+        <div className="max-w-[1280px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <a
+            href="#home"
+            className="text-[#f0ede8] no-underline text-[20px] tracking-tight"
+            style={{ fontFamily: "'DM Serif Display', serif" }}
+          >
+            Abdul<span className="text-[#aaff00]">.</span>
+          </a>
 
-        <div className="max-w-7xl mx-auto px-6 relative">
-          {/* Top Section */}
-          <div className="grid md:grid-cols-3 gap-10 mb-10 text-center md:text-left">
-            {/* Brand */}
-            <div>
-              <h3 className="text-3xl font-black mb-3 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Abdul Ahad
-              </h3>
-              <p className="text-slate-400 text-sm">
-                Full Stack Developer specializing in modern web applications
-                using React, Next.js and Node.js.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Quick Links</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li>
-                  <a href="#home" className="hover:text-emerald-400 transition">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#about"
-                    className="hover:text-emerald-400 transition"
-                  >
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#portfolio"
-                    className="hover:text-emerald-400 transition"
-                  >
-                    Portfolio
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    className="hover:text-emerald-400 transition"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Social */}
-            <div>
-              <h4 className="font-semibold mb-4 text-lg">Connect</h4>
-              <div className="flex justify-center md:justify-start gap-4">
+          <ul className="flex items-center gap-8 list-none m-0 p-0">
+            {navLinks.map((l) => (
+              <li key={l.name}>
                 <a
-                  href="https://github.com/abdul9838"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-slate-700 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-cyan-500 rounded-xl flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg"
+                  href={l.href}
+                  className="text-[#444] no-underline text-[10px] tracking-[0.1em] uppercase hover:text-[#aaff00] transition-colors duration-200"
+                  style={{ fontFamily: "'DM Mono', monospace" }}
                 >
-                  <Github size={22} />
+                  {l.name}
                 </a>
+              </li>
+            ))}
+          </ul>
 
-                <a
-                  href="https://www.linkedin.com/in/abdul-ahad-04850a248"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-slate-700 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-cyan-500 rounded-xl flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg"
-                >
-                  <Linkedin size={22} />
-                </a>
-
-                <a
-                  href="mailto:abdulahadansari810@gmail.com"
-                  className="w-12 h-12 bg-slate-700 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-cyan-500 rounded-xl flex items-center justify-center transition-all hover:scale-110 hover:shadow-lg"
-                >
-                  <Mail size={22} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="border-t border-slate-700 pt-6 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm">
-            <p>© {new Date().getFullYear()} Abdul Ahad. All rights reserved.</p>
-            <p className="mt-2 md:mt-0">Built with ❤️ using React & Tailwind</p>
+          <div
+            className="text-[#2a2a2a] text-[10px] tracking-[0.06em]"
+            style={{ fontFamily: "'DM Mono', monospace" }}
+          >
+            © {new Date().getFullYear()} Abdul Ahad. Built with React &
+            Tailwind.
           </div>
         </div>
       </footer>
-
-      <style jsx="true">{`
-        @keyframes gradient {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes spin-reverse {
-          from {
-            transform: rotate(360deg);
-          }
-          to {
-            transform: rotate(0deg);
-          }
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-gradient {
-          animation: gradient 8s ease infinite;
-        }
-
-        .bg-300\\% {
-          background-size: 300%;
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-
-        .animate-spin-reverse {
-          animation: spin-reverse 15s linear infinite;
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out forwards;
-        }
-      `}</style>
     </div>
   );
-};
-
-export default Portfolio;
+}
