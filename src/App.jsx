@@ -350,7 +350,7 @@ export default function Portfolio() {
 
           {/* Desktop CTA */}
           <a
-            href="/assets/Abdul_Ahad_ReactJS.pdf"
+            href="/assets/Abdul_Ahad_Resume.pdf"
             download
             className="hidden lg:flex items-center gap-2 bg-[#aaff00] text-[#080808] no-underline px-5 py-3 rounded-sm text-[11px] tracking-[0.08em] uppercase font-medium transition-all duration-200 hover:opacity-80 hover:-translate-y-px"
             style={{ fontFamily: "'DM Mono', monospace" }}
@@ -447,7 +447,7 @@ export default function Portfolio() {
           {/* Actions */}
           <div className="flex flex-wrap justify-center items-center gap-4 mb-16">
             <a
-              href="/assets/Abdul_Ahad_ReactJS.pdf"
+              href="/assets/Abdul_Ahad_Resume.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
