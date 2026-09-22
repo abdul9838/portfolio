@@ -461,7 +461,7 @@ const portfolioProjects = [
               Web Developer
             </strong>{" "}
             crafting seamless digital experiences. With{" "}
-            <strong className="text-[#aaff00] font-semibold">2.5+ years</strong>{" "}
+            <strong className="text-[#aaff00] font-semibold">3+ years</strong>{" "}
             building modern, scalable web applications.
           </p>
 
