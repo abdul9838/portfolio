@@ -149,26 +149,13 @@ const experienceData = [
     role: "Frontend Developer",
     company: "Growmoredigi Codebuilder",
     location: "Lucknow, India",
-    duration: "Jan 2024 – Mar 2025",
+    duration: "Aug 2024 – Mar 2025",
     points: [
       "Built and maintained 3+ production-grade React.js SPAs for E-Commerce, Learning Management System, and Blogging use cases.",
       "Optimized component re-renders using React.memo, useMemo, and useCallback, resulting in approximately 25% improvement in runtime performance.",
       "Developed reusable UI components to improve consistency and reduce development effort.",
       "Implemented form handling and validation using React Hook Form, reducing form-related issues by approximately 40%.",
       "Built responsive interfaces using React.js, Tailwind CSS, Bootstrap, and modern JavaScript.",
-    ],
-  },
-  {
-    id: 4,
-    role: "Web Developer Intern",
-    company: "Analyze Infotech",
-    location: "Lucknow, India",
-    duration: "Aug 2023 – Dec 2023",
-    points: [
-      "Designed and developed responsive, user-friendly web applications using HTML, CSS, and JavaScript.",
-      "Worked on backend features using Python and Django.",
-      "Contributed to improving application performance, security, and scalability.",
-      "Worked on enterprise-level and client-facing web solutions.",
     ],
   },
 ];
