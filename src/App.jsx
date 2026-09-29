@@ -6,11 +6,11 @@ import {
   Github,
   Linkedin,
   Mail,
+  Menu,
   Monitor,
+  Phone,
   Server,
   X,
-  Menu,
-  Phone,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -553,7 +553,7 @@ export default function Portfolio() {
 
           {/* Skills panel grid */}
           <div className="mb-10 border-y border-[#1f1f1f]">
-            {skillsData.map((group, groupIndex) => (
+            {skillsData.map((group) => (
               <div
                 key={group.title}
                 className="grid grid-cols-1 border-b border-[#1f1f1f] last:border-b-0 lg:grid-cols-[260px_1fr]"
@@ -580,7 +580,7 @@ export default function Portfolio() {
                 {/* Skills */}
                 <div className="p-6 sm:p-8">
                   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-                    {group.skills.map((skill, skillIndex) => (
+                    {group.skills.map((skill) => (
                       <div
                         key={skill.name}
                         className="group/skill flex items-center gap-3 border-b border-[#1f1f1f] py-4"
