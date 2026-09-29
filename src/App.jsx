@@ -54,213 +54,230 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
-];
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "Skills", href: "#skills" },
+    { name: "Experience", href: "#experience" },
+    { name: "Education", href: "#education" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
+  ];
 
-const skillsData = [
-  {
-    title: "Frontend Development",
-    skills: [
-      { name: "HTML / CSS", level: 95 },
-      { name: "JavaScript (ES6+)", level: 90 },
-      { name: "React.js", level: 88 },
-      { name: "Next.js", level: 85 },
-      { name: "Tailwind CSS", level: 92 },
-      { name: "Redux Toolkit", level: 85 },
-      { name: "React Router", level: 82 },
-      { name: "Context API", level: 82 },
-      { name: "React Hook Form", level: 85 },
-      { name: "Axios", level: 85 },
-    ],
-  },
-  {
-    title: "Backend & Database",
-    skills: [
-      { name: "Node.js", level: 75 },
-      { name: "Express.js", level: 70 },
-      { name: "REST APIs", level: 82 },
-      { name: "JWT Authentication", level: 75 },
-      { name: "MongoDB", level: 72 },
-    ],
-  },
-  {
-    title: "Tools & Performance",
-    skills: [
-      { name: "Git", level: 85 },
-      { name: "GitHub", level: 85 },
-      { name: "Performance Optimization", level: 82 },
-      { name: "Code Splitting", level: 78 },
-      { name: "Lazy Loading", level: 82 },
-      { name: "Memoization", level: 80 },
-    ],
-  },
-];
-
-const additionalSkills = [
-  "Responsive Design",
-  "Bootstrap",
-  "Vercel",
-  "Netlify",
-  "RESTful APIs",
-  "SSR",
-  "SSG",
-  "API Integration",
-  "SEO Optimization",
-  "MUI",
-];
-
-const experienceData = [
-  {
-    id: 1,
-    role: "Full Stack Developer (Next.js)",
-    company: "Edtech Innovate",
-    location: "Noida, India",
-    duration: "Feb 2026 – Present",
-    points: [
-      "Architected and delivered scalable full-stack web applications using React, Next.js, Node.js, and RESTful APIs.",
-      "Implemented SSR, SSG, API integration, authentication, and database-driven features to build fast, secure, and SEO-friendly applications.",
-      "Built responsive and reusable React/Next.js components using Tailwind CSS for consistent user experiences.",
-      "Integrated Redux Toolkit for centralized state management across application modules.",
-    ],
-  },
-  {
-    id: 2,
-    role: "Full Stack Developer (Next.js)",
-    company: "4Tuners Technologies",
-    location: "Remote",
-    duration: "Apr 2025 – Jan 2026",
-    points: [
-      "Developed and maintained full-stack features using Next.js, React.js, and Node.js/Express.",
-      "Built server-rendered pages with improved performance, loading speed, and SEO.",
-      "Designed and consumed RESTful APIs with JWT-based authentication.",
-      "Integrated MongoDB for secure and scalable data management.",
-      "Built reusable and responsive UI components using Tailwind CSS.",
-      "Implemented Redux Toolkit for centralized state management and improved application consistency.",
-    ],
-  },
-  {
-    id: 3,
-    role: "Frontend Developer",
-    company: "Growmoredigi Codebuilder",
-    location: "Lucknow, India",
-    duration: "Aug 2024 – Mar 2025",
-    points: [
-      "Built and maintained 3+ production-grade React.js SPAs for E-Commerce, Learning Management System, and Blogging use cases.",
-      "Optimized component re-renders using React.memo, useMemo, and useCallback, resulting in approximately 25% improvement in runtime performance.",
-      "Developed reusable UI components to improve consistency and reduce development effort.",
-      "Implemented form handling and validation using React Hook Form, reducing form-related issues by approximately 40%.",
-      "Built responsive interfaces using React.js, Tailwind CSS, Bootstrap, and modern JavaScript.",
-    ],
-  },
-];
-
-const educationData = [
-  {
-    id: 1,
-    degree: "B.Tech in Computer Science and Engineering",
-    year: "2020 – 2023",
-    college: "Khwaja Moinuddin Chisthi Language University, Lucknow",
-    description:
-      "Bachelor's degree focused on Computer Science, Software Engineering, and Web Development.",
-  },
-  {
-    id: 2,
-    degree: "Diploma — Government Polytechnic",
-    year: "2017 – 2020",
-    college: "Government Polytechnic, Etawah",
-    description: "",
-  },
-  {
-    id: 3,
-    degree: "Intermediate",
-    year: "2015 – 2017",
-    college: "S. L. B. S. Inter College, Deoria",
-    description: "",
-  },
-  {
-    id: 4,
-    degree: "High School",
-    year: "2013 – 2015",
-    college: "Kishan Intermediate College, Deoria",
-    description: "",
-  },
-];
-
-const services = [
-  {
-    icon: <Monitor size={28} />,
-    title: "Frontend Development",
-    desc: "Responsive and user-focused interfaces using React.js, Next.js, Tailwind CSS, and modern JavaScript.",
-    num: "01",
-  },
-  {
-    icon: <Code size={28} />,
-    title: "Backend Development",
-    desc: "Secure and scalable REST APIs and server-side applications using Node.js, Express.js, JWT, and MongoDB.",
-    num: "02",
-  },
-  {
-    icon: <Server size={28} />,
-    title: "Full-Stack Applications",
-    desc: "End-to-end web applications integrating modern frontend technologies, backend services, databases, and APIs.",
-    num: "03",
-  },
-];
-
-const portfolioProjects = [
-  {
-    id: 4,
-    title: "Get Seen Grow",
-    description:
-      "Creative agency website offering web design, branding, web development, SEO, and digital marketing services.",
-    image: "/assets/get-seen-grow.png",
-    link: "https://getseengrow.com/",
-    tags: ["React", "Design", "Marketing"],
-  },
+  const skillsData = [
     {
-    id: 3,
-    title: "E-commerce",
-    description:
-      "E-commerce platform with advanced search functionality to help users discover and find products easily.",
-    image: "/assets/gaurastra.webp",
-    link: "https://www.gaurastra.com/",
-    tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
-  },
+      title: "Frontend Development",
+      skills: [
+        { name: "HTML / CSS" },
+        { name: "JavaScript (ES6+)" },
+        { name: "TypeScript" },
+        { name: "React.js" },
+        { name: "Next.js" },
+        { name: "SSR / SSG" },
+        { name: "Tailwind CSS" },
+        { name: "Bootstrap" },
+        { name: "Responsive Design" },
+        { name: "Redux Toolkit" },
+        { name: "React Router" },
+        { name: "Context API" },
+        { name: "React Hook Form" },
+      ],
+    },
+    {
+      title: "Backend & Infrastructure",
+      skills: [
+        { name: "Node.js" },
+        { name: "Express.js" },
+        { name: "REST APIs" },
+        { name: "API Integration" },
+        { name: "JWT Authentication" },
+        { name: "Axios" },
+        { name: "Docker" },
+        { name: "Git" },
+        { name: "GitHub" },
+      ],
+    },
+    {
+      title: "Database & Caching",
+      skills: [
+        { name: "MongoDB" },
+        { name: "MySQL" },
+        { name: "Redis" },
+        { name: "BullMQ" },
+      ],
+    },
+    {
+      title: "Performance & Optimization",
+      skills: [
+        { name: "Performance Optimization" },
+        { name: "Code Splitting" },
+        { name: "Lazy Loading" },
+        { name: "Memoization" },
+        { name: "React.memo" },
+        { name: "useMemo" },
+        { name: "useCallback" },
+      ],
+    },
+  ];
 
-  {
-    id: 5,
-    title: "Milk Delivery Tracking CRM",
-    description:
-      "Milk delivery management platform with separate admin and delivery roles, order processing, delivery tracking, route management, and analytics dashboards.",
-    image: "/assets/milk-delivery.png",
-    link: "https://valentiadelivery.com/",
-    tags: [ "React", "Node.js", "Dashboard"],
-  },
-  {
-    id: 1,
-    title: "Emstell",
-    description:
-      "Modern software company website showcasing digital services and innovative tech solutions for businesses.",
-    image: "/assets/emstell.webp",
-    link: "https://emstell.vercel.app/",
-    tags: ["Next.js", "React", "Web Dev"],
-  },
-  {
-    id: 2,
-    title: "City Cars",
-    description:
-      "Car listing application with powerful functionality that allows users to post and explore cars for rent.",
-    image: "/assets/cars.webp",
-    link: "https://citycarsa.com/",
-    tags: ["React", "Node.js", "Car Rental"],
-  },
-];
+  const additionalSkills = [
+    "Responsive Design",
+    "Bootstrap",
+    "Vercel",
+    "Netlify",
+    "RESTful APIs",
+    "SSR",
+    "SSG",
+    "API Integration",
+    "SEO Optimization",
+    "MUI",
+  ];
+
+  const experienceData = [
+    {
+      id: 1,
+      role: "Full Stack Developer (Next.js)",
+      company: "Edtech Innovate",
+      location: "Noida, India",
+      duration: "Feb 2026 – Present",
+      points: [
+        "Architected and delivered scalable full-stack web applications using React, Next.js, Node.js, and RESTful APIs.",
+        "Implemented SSR, SSG, API integration, authentication, and database-driven features to build fast, secure, and SEO-friendly applications.",
+        "Built responsive and reusable React/Next.js components using Tailwind CSS for consistent user experiences.",
+        "Integrated Redux Toolkit for centralized state management across application modules.",
+      ],
+    },
+    {
+      id: 2,
+      role: "Full Stack Developer (Next.js)",
+      company: "4Tuners Technologies",
+      location: "Remote",
+      duration: "Apr 2025 – Jan 2026",
+      points: [
+        "Developed and maintained full-stack features using Next.js, React.js, and Node.js/Express.",
+        "Built server-rendered pages with improved performance, loading speed, and SEO.",
+        "Designed and consumed RESTful APIs with JWT-based authentication.",
+        "Integrated MongoDB for secure and scalable data management.",
+        "Built reusable and responsive UI components using Tailwind CSS.",
+        "Implemented Redux Toolkit for centralized state management and improved application consistency.",
+      ],
+    },
+    {
+      id: 3,
+      role: "Frontend Developer",
+      company: "Growmoredigi Codebuilder",
+      location: "Lucknow, India",
+      duration: "Aug 2024 – Mar 2025",
+      points: [
+        "Built and maintained 3+ production-grade React.js SPAs for E-Commerce, Learning Management System, and Blogging use cases.",
+        "Optimized component re-renders using React.memo, useMemo, and useCallback, resulting in approximately 25% improvement in runtime performance.",
+        "Developed reusable UI components to improve consistency and reduce development effort.",
+        "Implemented form handling and validation using React Hook Form, reducing form-related issues by approximately 40%.",
+        "Built responsive interfaces using React.js, Tailwind CSS, Bootstrap, and modern JavaScript.",
+      ],
+    },
+  ];
+
+  const educationData = [
+    {
+      id: 1,
+      degree: "B.Tech in Computer Science and Engineering",
+      year: "2020 – 2023",
+      college: "Khwaja Moinuddin Chisthi Language University, Lucknow",
+      description:
+        "Bachelor's degree focused on Computer Science, Software Engineering, and Web Development.",
+    },
+    {
+      id: 2,
+      degree: "Diploma — Government Polytechnic",
+      year: "2017 – 2020",
+      college: "Government Polytechnic, Etawah",
+      description: "",
+    },
+    {
+      id: 3,
+      degree: "Intermediate",
+      year: "2015 – 2017",
+      college: "S. L. B. S. Inter College, Deoria",
+      description: "",
+    },
+    {
+      id: 4,
+      degree: "High School",
+      year: "2013 – 2015",
+      college: "Kishan Intermediate College, Deoria",
+      description: "",
+    },
+  ];
+
+  const services = [
+    {
+      icon: <Monitor size={28} />,
+      title: "Frontend Development",
+      desc: "Responsive and user-focused interfaces using React.js, Next.js, Tailwind CSS, and modern JavaScript.",
+      num: "01",
+    },
+    {
+      icon: <Code size={28} />,
+      title: "Backend Development",
+      desc: "Secure and scalable REST APIs and server-side applications using Node.js, Express.js, JWT, and MongoDB.",
+      num: "02",
+    },
+    {
+      icon: <Server size={28} />,
+      title: "Full-Stack Applications",
+      desc: "End-to-end web applications integrating modern frontend technologies, backend services, databases, and APIs.",
+      num: "03",
+    },
+  ];
+
+  const portfolioProjects = [
+    {
+      id: 4,
+      title: "Get Seen Grow",
+      description:
+        "Creative agency website offering web design, branding, web development, SEO, and digital marketing services.",
+      image: "/assets/get-seen-grow.png",
+      link: "https://getseengrow.com/",
+      tags: ["React", "Design", "Marketing"],
+    },
+    {
+      id: 3,
+      title: "E-commerce",
+      description:
+        "E-commerce platform with advanced search functionality to help users discover and find products easily.",
+      image: "/assets/gaurastra.webp",
+      link: "https://www.gaurastra.com/",
+      tags: ["E-commerce", "Next.js", "React", "Tailwind CSS"],
+    },
+
+    {
+      id: 5,
+      title: "Milk Delivery Tracking CRM",
+      description:
+        "Milk delivery management platform with separate admin and delivery roles, order processing, delivery tracking, route management, and analytics dashboards.",
+      image: "/assets/milk-delivery.png",
+      link: "https://valentiadelivery.com/",
+      tags: ["React", "Node.js", "Dashboard"],
+    },
+    {
+      id: 1,
+      title: "Emstell",
+      description:
+        "Modern software company website showcasing digital services and innovative tech solutions for businesses.",
+      image: "/assets/emstell.webp",
+      link: "https://emstell.vercel.app/",
+      tags: ["Next.js", "React", "Web Dev"],
+    },
+    {
+      id: 2,
+      title: "City Cars",
+      description:
+        "Car listing application with powerful functionality that allows users to post and explore cars for rent.",
+      image: "/assets/cars.webp",
+      link: "https://citycarsa.com/",
+      tags: ["React", "Node.js", "Car Rental"],
+    },
+  ];
 
   const handleInputChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -535,37 +552,48 @@ const portfolioProjects = [
           </div>
 
           {/* Skills panel grid */}
-          <div className="grid lg:grid-cols-2 gap-px bg-[#1f1f1f] border border-[#1f1f1f] rounded-sm overflow-hidden mb-10">
-            {skillsData.map((group) => (
-              <div key={group.title} className="bg-[#0e0e0e] p-10">
-                <div
-                  className="text-[#aaff00] text-[11px] tracking-[0.14em] uppercase mb-10 flex items-center gap-3"
-                  style={{ fontFamily: "'DM Mono', monospace" }}
-                >
-                  <span className="w-5 h-px bg-[#aaff00] block" /> {group.title}
+          <div className="mb-10 border-y border-[#1f1f1f]">
+            {skillsData.map((group, groupIndex) => (
+              <div
+                key={group.title}
+                className="grid grid-cols-1 border-b border-[#1f1f1f] last:border-b-0 lg:grid-cols-[260px_1fr]"
+              >
+                {/* Category */}
+                <div className="border-b border-[#1f1f1f] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+                  <div className="flex items-start gap-4">
+
+                    <div>
+                      <div
+                        className="mb-2 text-[10px] uppercase tracking-[0.16em] text-[#aaff00]"
+                        style={{ fontFamily: "'DM Mono', monospace" }}
+                      >
+                        Expertise
+                      </div>
+
+                      <h3 className="text-lg font-medium tracking-tight text-[#e7e4de]">
+                        {group.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-8">
-                  {group.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-baseline mb-3">
-                        <span className="text-[14px] font-medium text-[#d4d1cc]">
+
+                {/* Skills */}
+                <div className="p-6 sm:p-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+                    {group.skills.map((skill, skillIndex) => (
+                      <div
+                        key={skill.name}
+                        className="group/skill flex items-center gap-3 border-b border-[#1f1f1f] py-4"
+                      >
+                        <span className="h-1 w-1 rounded-full bg-[#333] transition-colors duration-200 group-hover/skill:bg-[#aaff00]" />
+
+                        <span className="text-[13px] text-[#c9c6c1] transition-colors duration-200 group-hover/skill:text-white">
                           {skill.name}
                         </span>
-                        <span
-                          className="text-[12px] text-[#444]"
-                          style={{ fontFamily: "'DM Mono', monospace" }}
-                        >
-                          {skill.level}%
-                        </span>
+
                       </div>
-                      <div className="h-px bg-[#1f1f1f] w-full overflow-hidden">
-                        <div
-                          className="h-full bg-[#aaff00] anim-bar"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
